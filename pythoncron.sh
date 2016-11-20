@@ -9,8 +9,8 @@ if [[ ! -f "$1" ]] ;then
 	echo "$now error , $1 does not exist " >> $logFile 
 	exit 1
 fi
-prog=` pgrep -fl "$1" | head -n1 | awk '{print $2}' `
-if [[ $prog != "python3" ]]  ;then
+prog=` pgrep -fl "$1" |  awk '{print $2}' | grep "python3" | wc -l  `
+if [[ $prog -lt 1 ]]  ;then
 	echo "$now  $1 is dead , start ... " >> $logFile
 	which python3
 	code=$?
@@ -20,7 +20,9 @@ if [[ $prog != "python3" ]]  ;then
 	else
 		echo "$now check python3 installed ? " >> $logFile
 	fi
+elif [[ $prog -eq 1 ]] ;then
+	echo " $now skip   , prog : $prog is ok" >> $logFile
 else
-	echo " $now skip   , prog : $prog" >> $logFile
+	echo " $now WARNING   , prog : $prog is more than one !" >> $logFile
 fi
 
