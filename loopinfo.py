@@ -12,6 +12,7 @@ data= {
         'pi_time':f.getCurTime(),
         'serial':f.getserial(),
         'cpu_temp':f.getCpuTemp(),
+        'load':f.getLoad(),
         }
 cookies = {
         'php': 'a',

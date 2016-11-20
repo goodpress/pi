@@ -62,3 +62,9 @@ def getCpuTemp():
     #logger.info("stdoutdata: " + stdoutdata.split()[0])
     logger.info(command + " -->stdoutdata: " + stdoutdata)
     return stdoutdata
+def getLoad():
+    command="uptime | awk -F 'load' '{print $2}'"
+    stdoutdata = subprocess.getoutput(command)
+    #logger.info("stdoutdata: " + stdoutdata.split()[0])
+    logger.info(command + " -->stdoutdata: " + stdoutdata)
+    return stdoutdata
