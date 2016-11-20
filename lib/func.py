@@ -15,8 +15,7 @@ def getPubIp():
     return stdoutdata
 def getCurTime():
     ISOTIMEFORMAT='%Y-%m-%d %X'
-    readTime=time.strftime(ISOTIMEFORMAT,time.localtime())
-    return readTime
+    return time.strftime(ISOTIMEFORMAT,time.localtime()) 
 def getHostName():
     return socket.gethostbyname(socket.gethostname()) 
 def getFqdn():
